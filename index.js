@@ -7,7 +7,20 @@ configDotenv({
 })
 const app = express()
 
-app.use(cors({ origin:process.env.CORS, credentials: true }))
+const allowedOrigins = process.env.CORS.split(',');
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+};
+
+app.use(cors(corsOptions))
 
 const sentences = [
     "The sky is blue because it's a reflection of the ocean.",
