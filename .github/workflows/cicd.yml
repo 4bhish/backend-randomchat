@@ -33,4 +33,3 @@ jobs:
           environment_name: 'Backend-randomchat-env-1'
           version_label: ${{ github.sha }}
           region: ap-south-1 
-          deployment_package: backend-randomchat-build.zip
