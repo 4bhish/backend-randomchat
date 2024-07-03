@@ -7,7 +7,7 @@ configDotenv({
 })
 const app = express()
 
-app.use(cors({ origin:'https://randomchatbot.vercel.app', credentials: true }))
+app.use(cors({ origin:process.env.CORS, credentials: true }))
 
 const sentences = [
     "The sky is blue because it's a reflection of the ocean.",
